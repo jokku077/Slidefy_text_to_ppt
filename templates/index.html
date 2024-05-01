@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slidefy</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}"> <!-- Reference external CSS file -->
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@700&display=swap" rel="stylesheet">
+</head>
+<body background="{{ url_for('static',filename='images/6013781.jpg') }}">
+  <div id="heading">
+        <span id="slidefy">
+          SLIDEFY:
+        </span>
+        <span id="desc">
+            Text-to-PPT Generation
+        </span>
+      
+    </div>
+    <form id="ppt-form" method="POST" action="/" enctype="multipart/form-data">
+        <label for="topic">Enter topic for presentation:</label>
+        <input type="text" id="topic" name="topic" required>
+        
+        <div>
+          <div id = "rangearea">
+            <span class="rangespec"><label for="num_slides">Number of Slides:</label></span>
+            <span class ="rangespec" id="rangeValue">5</span>
+          <span class ="rangespec">
+            <input class="range" type="range" id="num_slides" name="num_slides" value="0" min="5" max="12" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)" oninput="updateValue(this.value)">
+          </span>
+          </div>
+          <script type="text/javascript">
+              function rangeSlide(value) {
+                  document.getElementById('rangeValue').innerHTML = value;
+              }
+          </script>
+        </div>
+        
+        <button type="submit" id="submit-button">Generate Presentation</button>
+    </form>
+
+    <div id="loading-spinner" style="display: none;">
+        <img src="{{ url_for('static', filename='images/loading_spinner.gif') }}" alt="Loading...">
+    </div>
+    
+    {% if ppt_filename %}
+  <div class="container">
+    <div class="download_button">
+      <form method="GET" action="{{ url_for('download', filename=ppt_filename) }}">
+        <button id="download_button" type="submit">Download Presentation</button>
+      </form>
+      {% if not image_paths %}
+        <div id="no_img_msg">
+            <p>Your Presentation has been Generated</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+{% endif %}
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Reference external JS file -->
+</body>
+</html>

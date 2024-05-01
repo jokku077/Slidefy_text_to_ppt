@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+body {
+    background-image: url('/static/images/bg1.gif');
+    background-size: cover; /* Adjust the size of the image */
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-family: 'Dongle', sans-serif;
+}
+
+#heading {
+    background-color: #874bd1;
+    color: #ccc;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 400px;
+    gap: 7px;
+    border-radius: 25px;
+}
+
+#slidefy{
+    font-size: 50px;
+}
+
+#desc{
+    font-size: 30px;
+}
+
+#rangeValue {
+    position: relative;
+    display: block;
+    text-align: center;
+    font-size: 30px;
+    color: #000000;
+}
+
+.range {
+    width: 200px;
+    height: 15px;
+    background: #ffffff;
+    outline: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: inset 0 0 5px #999;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #999;
+    cursor: pointer;
+    border: 4px solid #333;
+    box-shadow: inset 0 0 5px #999;
+}
+
+/*to arrange range value and slider horizontally*/
+.rangespec {
+    display: flex;
+    flex-direction: column; 
+    margin: 5px;
+}  
+
+
+#ppt-form {
+    background-color: #3f3f419d;
+    max-width: 600px;
+    margin: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    box-shadow:  -5px 5px 10px #727272,
+             5px -5px 10px #ffffff;
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    align-items: center; /* Center-align children */
+}
+
+#rangearea{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style for text inputs and buttons */
+input[type="text"], input[type="file"], button {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+button {
+    margin-top: 30px;
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
+    color: #3a3a3a;
+    background-color: #000000;
+    color: rgb(5, 5, 5);
+    cursor: pointer;
+    transition: transform 0.2s;
+    max-width: 300px;
+    border-radius: 25px;
+    background: #e0e0e0;
+    box-shadow: inset -20px -20px 60px #8f8f8f,
+            inset 20px 20px 60px #ffffff;
+}
+
+/* Style for button hover effect */
+button:hover {
+    transform: scale(1.1);
+    background-color: #cbcbcb;
+}
+
+#download_button {
+
+    background-color: #3f3f41;
+    color: #000000;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  -20px 20px 60px #9d9d9d,
+                 20px -20px 60px #ffffff; 
+    display: flex; /* Make the form a flex container */
+    flex-direction: row;
+    align-items: center;  
+    text-align: center;           
+}
+
+/* Style for download button hover effect */
+#download_button:hover {
+    transform: scale(1.1);
+}
+
+#no_img_msg{
+    text-align: center;
+}
+
+/* Container styling to center-align the download button */
+.container {
+    height: 200px;
+    position: relative;
+    display: flex; /* Make the container a flex container */
+    justify-content: center; /* Center-align items horizontally */
+    align-items: center; /* Center-align items vertically */
+}
+
+/* Style for loading spinner */
+#loading-spinner {
+    display: none;
+    text-align: center;
+    margin-top: 20px; /* Add some spacing from the form */
+}
+
+/* Centering the spinner */
+#loading-spinner img {
+    width: 50px; /* Adjust size as needed */
+    height: 50px; /* Adjust size as needed */
+    border-radius: 35%;
+}
