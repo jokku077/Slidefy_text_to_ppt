@@ -30,6 +30,8 @@ def index():
     if request.method == 'POST':
         topic = request.form.get('topic')
         num_slides = request.form.get("num_slides")
+        theme = request.form.get("selected_image")
+        print(theme)
 
         if topic:
             slide_titles = generate_slide_titles(topic, num_slides)
@@ -42,7 +44,7 @@ def index():
 
             #Generating presentation file
             ppt_filename = os.path.join(output_directory, f"{topic}_presentation.pptx")
-            create_presentation(topic, slide_titles, slide_contents, image_paths, ppt_filename)
+            create_presentation(topic, slide_titles, slide_contents, image_paths, ppt_filename, theme)
 
     # Render the HTML form and pass the ppt_filename variable to the template
     return render_template('index.html', ppt_filename=ppt_filename)
@@ -75,9 +77,9 @@ def generate_slide_content(slide_title): #for each slide title from the list, ge
   response = model.generate_content(prompt)
   return response.text.strip().replace("**", "")
 
-def create_presentation(topic, slide_titles, slide_contents, image_paths, ppt_filename):
+def create_presentation(topic, slide_titles, slide_contents, image_paths, ppt_filename, theme):
     
-    prs = pptx.Presentation("themes\\theme1.pptx")#create object, using existing theme
+    prs = pptx.Presentation(f"themes\\theme{theme}.pptx")#create object, using existing theme
 
     title_layout = prs.slide_layouts[0]
     title_slide = prs.slides.add_slide(title_layout)

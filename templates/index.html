@@ -17,7 +17,7 @@
     </div>
     <form id="ppt-form" method="POST" action="/" enctype="multipart/form-data">
         <label for="topic">Enter topic for presentation:</label>
-        <input type="text" id="topic" name="topic" required>
+        <input type="text" id="topic" name="topic" required placeholder="eg: Global warming">
         
         <div>
           <div id = "rangearea">
@@ -33,6 +33,45 @@
               }
           </script>
         </div>
+
+        <div id="image-selection">
+          <h2>Select Theme</h2>
+          <div id="image-container">
+              <span class="navigation">
+                  <button class="navbuttons" onclick="prevImage()"><</button>
+              </span>
+              <span class="image-wrapper">
+                  <img src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Image 1" width="200" height="140" class="themes">
+              </span>
+              <span class="navigation">
+                  <button class="navbuttons" onclick="nextImage()">></button>
+              </span>
+              <input type="hidden" id="selected-image" name="selected_image">
+          </div>
+      </div>
+  
+      <script>
+          var images = ["{{ url_for('static', filename='images/theme1.png') }}", "{{ url_for('static', filename='images/theme2.png') }}", "{{ url_for('static', filename='images/theme3.png') }}", "{{ url_for('static', filename='images/theme4.png') }}", "{{ url_for('static', filename='images/theme5.png') }}"];
+          var currentIndex = 0;
+  
+          function updateImage() {
+              var imageUrl = images[currentIndex];
+              document.querySelector('.image-wrapper img').src = imageUrl;
+              document.getElementById('selected-image').value = currentIndex + 1;
+          }
+  
+          function prevImage() {
+              currentIndex = (currentIndex - 1 + images.length) % images.length;
+              updateImage();
+          }
+  
+          function nextImage() {
+              currentIndex = (currentIndex + 1) % images.length;
+              updateImage();
+          }
+  
+          updateImage(); // Display initial image
+      </script>
         
         <button type="submit" id="submit-button">Generate Presentation</button>
     </form>
@@ -42,19 +81,14 @@
     </div>
     
     {% if ppt_filename %}
-  <div class="container">
+    <div id="no_img_msg">
+        <p>Your Presentation has been Generated</p>
+    </div>
     <div class="download_button">
       <form method="GET" action="{{ url_for('download', filename=ppt_filename) }}">
         <button id="download_button" type="submit">Download Presentation</button>
-      </form>
-      {% if not image_paths %}
-        <div id="no_img_msg">
-            <p>Your Presentation has been Generated</p>
-        </div>
-      {% endif %}
+      </form>  
     </div>
-  </div>
-
 {% endif %}
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script> <!-- Reference external JS file -->

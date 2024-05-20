@@ -2,7 +2,9 @@
 
 body {
     background-image: url('/static/images/bg1.gif');
+    /*background-size: cover; /* Adjust the size of the image */
     background-size: cover; /* Adjust the size of the image */
+    /*background-repeat: no-repeat;*/
     margin: 0;
     padding: 0;
     font-size: 25px;
@@ -72,14 +74,14 @@ body {
 
 
 #ppt-form {
-    background-color: #3f3f419d;
+    background-color: #ffffff;
     max-width: 600px;
     margin: auto;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 25px;
-    box-shadow:  -5px 5px 10px #727272,
-             5px -5px 10px #ffffff;
+    box-shadow:  -20px 20px 28px #949494,
+             20px -20px 28px #ffffff;
     display: flex;
     flex-direction: column; /* Arrange children in a column */
     align-items: center; /* Center-align children */
@@ -125,20 +127,22 @@ button:hover {
     background-color: #cbcbcb;
 }
 
-#download_button {
+.download_button {
 
-    background-color: #3f3f41;
+    background-color: #ffffff;
     color: #000000;
     cursor: pointer;
     transition: transform 0.2s;
     border-radius: 50px;
     background: #e0e0e0;
-    box-shadow:  -20px 20px 60px #9d9d9d,
-                 20px -20px 60px #ffffff; 
+    box-shadow:  -20px 20px 28px #949494,
+             20px -20px 28px #ffffff;
     display: flex; /* Make the form a flex container */
     flex-direction: row;
     align-items: center;  
-    text-align: center;           
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;           
 }
 
 /* Style for download button hover effect */
@@ -152,11 +156,18 @@ button:hover {
 
 /* Container styling to center-align the download button */
 .container {
-    height: 200px;
-    position: relative;
-    display: flex; /* Make the container a flex container */
-    justify-content: center; /* Center-align items horizontally */
-    align-items: center; /* Center-align items vertically */
+    background-color: #3f3f41;
+    color: #000000;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow:  -20px 20px 60px #9d9d9d,
+                 20px -20px 60px #ffffff; 
+    display: flex; /* Make the form a flex container */
+    flex-direction: row;
+    align-items: center;  
+    text-align: center;  /* Center-align items vertically */
 }
 
 /* Style for loading spinner */
@@ -171,4 +182,55 @@ button:hover {
     width: 50px; /* Adjust size as needed */
     height: 50px; /* Adjust size as needed */
     border-radius: 35%;
+}
+
+
+.navigation {
+    display: flex;
+    flex-direction: row; /* Arrange buttons vertically */
+    align-items: center; /* Align buttons horizontally */
+}
+
+.navigation button {
+    margin: 0; /* Reset button margin */
+}
+
+.navbuttons {
+    padding: 0;
+    margin: 15px; /* Adjust margin as needed */
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: #ccc;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+#image-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+}
+
+.themes{
+    border-radius: 15px;
+    border: 3px solid #333;
+}
+
+.image-wrapper{
+    border-radius: 5px;
+}
+
+/* Container styling to center-align the download button */
+.container {
+    height: 200px;
+    border-radius: 15px;
+    position: relative;
+    display: flex; /* Make the container a flex container */
+    flex-direction: row;
+    justify-content: center; /* Center-align items horizontally */
+    align-items: center; /* Center-align items vertically */
 }
